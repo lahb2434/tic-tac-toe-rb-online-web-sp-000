@@ -85,29 +85,26 @@ def won?(board)
     return win_combination 
   end
   end
-  return false
+  false
 end
 
 def full?(board)
-  if board.none? {|i| i == " "}
-    return true
-  end
+  board.none? {|i| i == " "}
 end
 
 def draw?(board)
   if !won?(board) && full?(board)
-    return true 
-  elsif!full?(board) && !won?(board)
+    return true
+  elsif !(full?(board) && won?(board))
     return false
   else won?(board)
     return false
   end
+
 end
 
 def over?(board)
-  if draw?(board) || won?(board) || full?(board)
-    return true
-  end
+  draw?(board) || won?(board) || full?(board)
 end
 
 def winner(board)
@@ -122,7 +119,6 @@ def play(board)
   end
   if winner(board) == "X" || winner(board) == "O"
     puts "Congratulations #{winner(board)}!"
-  
   else draw?(board)
     puts "Cat's Game!"
   end
